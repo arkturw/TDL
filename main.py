@@ -1,3 +1,9 @@
+import os
+
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 
 class ToDoList:
 
@@ -17,15 +23,18 @@ class ToDoList:
         # TODO load json
 
     def add_item(self):
-        print('Adding item')
-        print('[T]o Do', 'In [P]rogress', '[D]one', sep='\n')
+        clear_screen()
+        print('# Adding item')
+        print('1/T : To Do')
+        print('2/P : In Progress')
+        print('3/D : Done')
         column = input('Choose column: ')
         # Set actual column name
-        if column in 'tT':
+        if column in '1tT':
             column = 'todo'
-        elif column in 'pP':
+        elif column in '2pP':
             column = 'in_progress'
-        elif column in 'dD':
+        elif column in '3dD':
             column = 'done'
         else:
             print('No such column, dumbass!\n')
@@ -36,13 +45,14 @@ class ToDoList:
 
     def remove_item(self):
         print('Removing item')
-        pass
+        input('Press Enter')
 
     def edit_item(self):
         print('Editing item')
-        pass
+        input('Press Enter')
 
     def print_list(self):
+        clear_screen()
         for i in range(20):
             print('=', end='')
         print()
@@ -76,5 +86,6 @@ class ToDoList:
 
 
 if __name__ == '__main__':
+    clear_screen()
     to_do_list = ToDoList()
     to_do_list.run()
